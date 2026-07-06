@@ -13,10 +13,10 @@ import SwiftUI
 /// Single place that constructs **KMPSDK** services and passes them into **DemoViewSDK**.
 /// `LiveArithmeticCalculator` is a `struct` (value type) — no reference cycle with the UI tree.
 struct ContentView: View {
-    private let calculator1 = LiveArithmeticCalculator()
+    private let calculator = LiveArithmeticCalculator()
 
     var body: some View {
-        DemoCalculatorScreen(calculator: calculator1)
+        DemoCalculatorScreen(calculator: calculator)
     }
 }
 
