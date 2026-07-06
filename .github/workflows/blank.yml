@@ -13,10 +13,6 @@ on:
 env:
   XCODE_PROJECT: SIGamingSDK/SIGamingSDK.xcodeproj
   XCODE_SCHEME: SIGamingSDKExample
-  ARCHIVE_PATH: ${{ runner.temp }}/SIGamingSDKExample.xcarchive
-  EXPORT_PATH: ${{ runner.temp }}/export
-  EXPORT_OPTIONS_PATH: ${{ runner.temp }}/ExportOptions.plist
-  IPA_PATH: ${{ runner.temp }}/export/SIGamingSDKExample.ipa
 
 jobs:
   testflight:
@@ -75,6 +71,10 @@ jobs:
           set -euo pipefail
           echo "Build number: $BUILD_NUMBER"
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
+          echo "ARCHIVE_PATH=$RUNNER_TEMP/SIGamingSDKExample.xcarchive" >> "$GITHUB_ENV"
+          echo "EXPORT_PATH=$RUNNER_TEMP/export" >> "$GITHUB_ENV"
+          echo "EXPORT_OPTIONS_PATH=$RUNNER_TEMP/ExportOptions.plist" >> "$GITHUB_ENV"
+          echo "IPA_PATH=$RUNNER_TEMP/export/SIGamingSDKExample.ipa" >> "$GITHUB_ENV"
 
       - name: Install signing certificate
         env:
